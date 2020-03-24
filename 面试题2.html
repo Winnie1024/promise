@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    setTimeout(() => {
+        console.log(1)
+    })
+    new Promise((resolve) => {
+        console.log(2)
+        resolve()
+    }).then(() => {
+        console.log(3)
+    }).then(() => {
+        console.log(4)//要放到微队列要既要有函数又要改状态,3执行了再放4到微队列
+    })
+    console.log(5)
+
+    //2 5 3 4 1
+</script>
+<body>
+    
+</body>
+</html>
